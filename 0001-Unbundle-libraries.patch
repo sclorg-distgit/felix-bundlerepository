@@ -1,0 +1,41 @@
+From f2f391e2ab3f289657ada944327200025df74073 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Mon, 30 Apr 2012 20:25:01 +0200
+Subject: [PATCH 1/2] Unbundle libraries
+
+---
+ pom.xml |   11 +----------
+ 1 files changed, 1 insertions(+), 10 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index 19831ee..6081935 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -58,12 +58,6 @@
+       <artifactId>kxml2</artifactId>
+       <version>2.3.0</version>
+       <optional>true</optional>
+-      <exclusions>
+-        <exclusion>
+-          <groupId>xmlpull</groupId>
+-          <artifactId>xmlpull</artifactId>
+-        </exclusion>
+-      </exclusions>
+     </dependency>
+     <dependency>
+         <groupId>org.osgi</groupId>
+@@ -99,10 +93,7 @@
+           <instructions>
+             <Export-Package>org.apache.felix.bundlerepository;version="2.0"</Export-Package>
+             <Private-Package>
+-                org.kxml2.io,
+-                org.xmlpull.v1,
+-                org.apache.felix.bundlerepository.impl.*,
+-                org.apache.felix.utils.*
++                org.apache.felix.bundlerepository.impl.*
+             </Private-Package>
+             <Import-Package>!javax.xml.parsers,!org.xml.sax,org.osgi.service.log;resolution:=optional,org.osgi.service.obr;resolution:=optional,javax.xml.stream;resolution:=optional,*</Import-Package>
+             <DynamicImport-Package>org.apache.felix.shell</DynamicImport-Package>
+-- 
+1.7.7.6
+
