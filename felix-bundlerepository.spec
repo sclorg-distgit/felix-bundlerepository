@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.6.6
-Release:        15.9%{?dist}
+Release:        15.10%{?dist}
 Summary:        Bundle repository service
 License:        ASL 2.0 and MIT
 URL:            http://felix.apache.org/site/apache-felix-osgi-bundle-repository.html
@@ -19,14 +19,14 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
 BuildRequires:  %{?scl_prefix_java_common}mvn(junit:junit)
-BuildRequires:  maven30-mvn(net.sf.kxml:kxml2)
-BuildRequires:  maven30-mvn(org.apache.felix:felix-parent:pom:)
-BuildRequires:  maven30-mvn(org.apache.felix:org.apache.felix.shell)
-BuildRequires:  maven30-mvn(org.apache.felix:org.apache.felix.utils)
-BuildRequires:  maven30-mvn(org.apache.felix:org.osgi.service.obr)
-BuildRequires:  maven30-mvn(org.codehaus.woodstox:woodstox-core-asl)
-BuildRequires:  maven30-mvn(org.osgi:org.osgi.compendium)
-BuildRequires:  maven30-mvn(org.osgi:org.osgi.core)
+BuildRequires:  %{?scl_prefix}mvn(net.sf.kxml:kxml2)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.felix:felix-parent:pom:)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.felix:org.apache.felix.shell)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.felix:org.apache.felix.utils)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.felix:org.osgi.service.obr)
+BuildRequires:  %{?scl_prefix}mvn(org.codehaus.woodstox:woodstox-core-asl)
+BuildRequires:  %{?scl_prefix}mvn(org.osgi:org.osgi.compendium)
+BuildRequires:  %{?scl_prefix}mvn(org.osgi:org.osgi.core)
 BuildRequires:  %{?scl_prefix_java_common}mvn(xpp3:xpp3)
 %{?fedora:BuildRequires: %{?scl_prefix}mvn(org.easymock:easymock)}
 
@@ -42,7 +42,7 @@ This package contains the API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{site_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %patch1 -p1
 
@@ -76,13 +76,13 @@ set -e -x
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -94,6 +94,9 @@ set -e -x
 %doc LICENSE LICENSE.kxml2 NOTICE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.6.6-15.10
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.6.6-15.9
 - maven33 rebuild
 
