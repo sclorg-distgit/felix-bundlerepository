@@ -7,7 +7,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.6.6
-Release:        15.10%{?dist}
+Release:        15.11%{?dist}
 Summary:        Bundle repository service
 License:        ASL 2.0 and MIT
 URL:            http://felix.apache.org/site/apache-felix-osgi-bundle-repository.html
@@ -17,7 +17,7 @@ Patch1:         0001-Unbundle-libraries.patch
 
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix_java_common}mvn(junit:junit)
 BuildRequires:  %{?scl_prefix}mvn(net.sf.kxml:kxml2)
 BuildRequires:  %{?scl_prefix}mvn(org.apache.felix:felix-parent:pom:)
@@ -94,6 +94,9 @@ set -e -x
 %doc LICENSE LICENSE.kxml2 NOTICE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.6.6-15.11
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.6.6-15.10
 - maven33 rebuild #2
 
